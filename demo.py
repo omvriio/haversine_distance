@@ -57,7 +57,9 @@ cities = {
     "Settat": [-7.6162, 33.0021],
     "Berrechid": [-7.6188, 33.2670],
     "Taourirt": [-2.8790, 34.4078],
-    "Berkane": [-2.3146, 34.9200]}
+    "Berkane": [-2.3146, 34.9200],
+    "Guelmim": [-10.0734, 28.9864],
+    }
 
 # Get the coordinates of the cities
 if selected_city1 != "-" and selected_city2 != "-":
