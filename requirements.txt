@@ -1,3 +1,2 @@
+--upgrade pip==24.0
 streamlit
-math
-time
