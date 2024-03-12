@@ -7,10 +7,12 @@ st.write("Welcome to the Distance Calculator")
 st.write("This app is using the Haversine formula to calculate the distance between two points on the map")
 
 morrocan_cities=["Meknes","Oued Zem","Ouarzazate","Rabat","Casablanca","Fes","Tanger","Agadir","Marrakech","Essaouira","El Jadida","Tetouan","Nador","Al Hoceima","Laayoune","Dakhla","Taza","Khenifra","Beni Mellal","Safi","El Kelaa des Sraghna","Tiznit","Larache","Khouribga","Settat","Berrechid","Taourirt","Berkane","Sidi Kacem","Sidi Slimane","Errachidia","Guelmim","Tiflet","Lagouira","Sidi Ifni","Tiznit","Tata","Boujdour","Figuig","Guercif","Midelt","Ouezzane","Sefrou","Azrou","Youssoufia","Sidi Bennour","Skhirat","Oulad Teima","Tiflet","Larache","Khouribga","Settat","Berrechid","Taourirt","Berkane","Sidi Kacem","Sidi Slimane","Errachidia","Guelmim","Tiflet","Lagouira","Sidi Ifni","Tiznit","Tata","Boujdour","Figuig","Guercif","Midelt","Ouezzane","Sefrou","Azrou","Youssoufia","Sidi Bennour","Skhirat","Oulad Teima","Tiflet","Larache","Khouribga","Settat","Berrechid","Taourirt","Berkane","Sidi Kacem","Sidi Slimane","Errachidia","Guelmim","Tiflet","Lagouira","Sidi Ifni","Tiznit","Tata","Boujdour","Figuig","Guercif","Midelt","Ouezzane","Sefrou","Azrou","Youssoufia","Sidi Bennour","Skhirat","Oulad Teima","Tiflet","Larache","Khouribga","Settat","Berrechid","Taourirt","Berkane","Sidi Kacem","Sidi Slimane","Errachidia","Guelmim"]
+#add - if no city is selected
+morrocan_cities.insert(0, "-")
 selected_city1 = st.selectbox("mdina 1", morrocan_cities)
 selected_city2 = st.selectbox("mdina 2", morrocan_cities)
 
-st.write(f"Calculating distance between **{selected_city1}** and **{selected_city2}**")
+
 
 # Haversine formula
 def haversine(lon1, lat1, lon2, lat2):
@@ -58,16 +60,18 @@ cities = {
     "Berkane": [-2.3146, 34.9200]}
 
 # Get the coordinates of the cities
-city1 = cities[selected_city1]
-city2 = cities[selected_city2]
+if selected_city1 != "-" and selected_city2 != "-":
+    st.write(f"Calculating distance between **{selected_city1}** and **{selected_city2}**")
+    city1 = cities[selected_city1]
+    city2 = cities[selected_city2]
 
-# Calculate the distance
-distance = haversine(city1[0], city1[1], city2[0], city2[1])
+    # Calculate the distance
+    distance = haversine(city1[0], city1[1], city2[0], city2[1])
 
-#a box in streamlit to show distance with an animation
-with st.spinner('Wait for it...'):
-    sleep(5)
+    #a box in streamlit to show distance with an animation
+    with st.spinner('Wait for it...'):
+        sleep(5)
 
-st.success(f"The distance between {selected_city1} and {selected_city2} is {distance:.2f} km")
-st.balloons()
+    st.success(f"The distance between {selected_city1} and {selected_city2} is {distance:.2f} km")
+    st.balloons()
 
